@@ -32,6 +32,7 @@ public class UserRegController extends HttpServlet {
                 request.getParameter("id")
                 , request.getParameter("pw")
                 , request.getParameter("name")
+                , null
         );
         try {
             if(service.getOne(userDTO.getId()).getId() == null) {

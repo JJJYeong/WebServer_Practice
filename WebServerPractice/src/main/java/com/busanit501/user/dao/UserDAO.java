@@ -17,12 +17,14 @@ public class UserDAO {
         preparedStatement.setString(1, userVO.getId());
         preparedStatement.setString(2, userVO.getPw());
         @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+
         UserVO result = new UserVO();
         if(resultSet.next()) {
             result = UserVO.builder()
                     .id(resultSet.getString("id"))
                     .pw(resultSet.getString("pw"))
                     .name(resultSet.getString("name"))
+                    .uuid(resultSet.getString("uuid"))
                     .build();
         }
         return result;
@@ -40,6 +42,7 @@ public class UserDAO {
                     .id(resultSet.getString("id"))
                     .pw(resultSet.getString("pw"))
                     .name(resultSet.getString("name"))
+                    .uuid(resultSet.getString("uuid"))
                     .build();
             list.add(userVO);
         }
@@ -47,7 +50,7 @@ public class UserDAO {
     }
 
     public UserVO selectOne(String id) throws SQLException {
-        String sql = "select * from users where id = ?";
+        String sql = "select * from users where id=?";
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, id);
@@ -59,6 +62,7 @@ public class UserDAO {
                 .id(resultSet.getString("id"))
                 .pw(resultSet.getString("pw"))
                 .name(resultSet.getString("name"))
+                .uuid(resultSet.getString("uuid"))
                 .build();
     }
 
@@ -83,11 +87,36 @@ public class UserDAO {
     }
 
     public void delete(String id) throws SQLException {
-        String sql = "delete from users where id = ?";
+        String sql = "delete from users where id=?";
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, id);
         preparedStatement.executeUpdate();
     }
 
+    public void updateUUID(String id, String uuid) throws SQLException {
+        String sql = "update users set uuid=? where id=?";
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, uuid);
+        preparedStatement.setString(2, id);
+        preparedStatement.executeUpdate();
+    }
+
+    public UserVO selectByUUID(String uuid) throws SQLException {
+        String sql = "select * from users where uuid=?";
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, uuid);
+        @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        return UserVO.builder()
+                .id(resultSet.getString("id"))
+                .pw(resultSet.getString("pw"))
+                .name(resultSet.getString("name"))
+                .uuid(resultSet.getString("uuid"))
+                .build();
+    }
 }

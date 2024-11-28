@@ -15,6 +15,7 @@
     <form action="" method="post">
         ID : <input type="text" name="id"><br/>
         PW : <input type="password" name="pw"><br/>
+        <input type="checkbox" name="auto">자동로그인<br/>
         <button type="submit">로그인</button>
     </form>
     <a href="/register">회원가입</a>

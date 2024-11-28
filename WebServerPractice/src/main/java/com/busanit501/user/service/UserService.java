@@ -67,4 +67,17 @@ public enum UserService {
     public void delete(String id) throws SQLException {
         userDAO.delete(id);
     }
+
+    // update UUID
+    public void updateUUID(String id, String uuid) throws SQLException {
+        userDAO.updateUUID(id, uuid);
+    }
+
+    // get one by UUID
+    public UserDTO getOneByUUID(String uuid) throws SQLException {
+        UserVO userVO = userDAO.selectByUUID(uuid);
+        log.info("userVO : {}", userVO);
+
+        return modelMapper.map(userVO, UserDTO.class);
+    }
 }

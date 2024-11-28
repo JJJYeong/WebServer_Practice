@@ -32,9 +32,13 @@ public class LoginFilter implements Filter {
             log.info("2번째 이후로 서버에 요청을 했지만, 로그인 정보는 없는 경우");
             response.sendRedirect("/login");
             return;
-        } else {
-            log.info("loginInfo : " + session.getAttribute("loginInfo"));
         }
+        // 쿠키 체크
+//        if(cookie == null) {
+//            response.sendRedirect("/login");
+//            return;
+//        }
+
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
