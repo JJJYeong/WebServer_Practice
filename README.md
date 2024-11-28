@@ -1,6 +1,12 @@
 "# WebServer_Practice" 
 
 ```
+CREATE TABLE tbl_food (
+	fno INT AUTO_INCREMENT PRIMARY KEY,
+	title VARCHAR(100) NOT NULL,
+	dueDate DATE NOT NULL,
+	finished TINYINT NULL DEFAULT '0'
+);
 CREATE TABLE users (
 	id VARCHAR(20) PRIMARY KEY,
 	pw VARCHAR(20) NOT NULL,
