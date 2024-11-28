@@ -1,9 +1,9 @@
-package com.busanit501.service;
+package com.busanit501.user.service;
 
-import com.busanit501.dao.UserDAO;
-import com.busanit501.dto.UserDTO;
+import com.busanit501.user.dao.UserDAO;
+import com.busanit501.user.dto.UserDTO;
 import com.busanit501.util.MapperUtil;
-import com.busanit501.vo.UserVO;
+import com.busanit501.user.vo.UserVO;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 

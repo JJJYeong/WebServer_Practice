@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/user/*"})
+@WebFilter(urlPatterns = {"/main/*", "/user/*", "/food/*"})
 @Log4j2
 public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("doFilter, /user/ 하위로 들어오는 모든 url에 대해서 로그인 체크");
+        log.info("doFilter, 로그인 체크");
         // 세션 정보를 호출 및 가져오기.
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;

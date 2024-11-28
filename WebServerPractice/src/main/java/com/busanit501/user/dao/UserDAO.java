@@ -1,7 +1,7 @@
-package com.busanit501.dao;
+package com.busanit501.user.dao;
 
 import com.busanit501.util.ConnectionUtil;
-import com.busanit501.vo.UserVO;
+import com.busanit501.user.vo.UserVO;
 import lombok.Cleanup;
 
 import java.sql.*;

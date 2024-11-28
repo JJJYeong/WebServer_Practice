@@ -18,7 +18,7 @@
     <form action="/user/delete?id=${dto.id}" method="post">
         <button><a href="/user/update?id=${dto.id}">정보 수정</a></button>
         <button type="submit">회원 탈퇴</button><br/>
-        <a href="/user/list">목록으로</a>
+        <a href="/main">메인으로</a>
         <a href="/logout">로그아웃</a>
     </form>
 </body>

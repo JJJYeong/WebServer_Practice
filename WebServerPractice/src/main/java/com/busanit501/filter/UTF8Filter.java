@@ -17,7 +17,7 @@ public class UTF8Filter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("doFilter, / 하위로 들어오는 모든 url에 대해서 한글 변환 필터링");
+        log.info("doFilter, 모든 url에 대해서 한글 변환 필터링");
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         request.setCharacterEncoding("utf-8");
         filterChain.doFilter(servletRequest, servletResponse);

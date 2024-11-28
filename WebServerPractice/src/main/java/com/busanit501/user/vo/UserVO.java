@@ -1,4 +1,4 @@
-package com.busanit501.vo;
+package com.busanit501.user.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

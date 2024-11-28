@@ -1,7 +1,7 @@
-package com.busanit501.controller;
+package com.busanit501.user.controller;
 
-import com.busanit501.dto.UserDTO;
-import com.busanit501.service.UserService;
+import com.busanit501.user.dto.UserDTO;
+import com.busanit501.user.service.UserService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
             if(user.getId() != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("loginInfo", user);
-                response.sendRedirect("/user/list");
+                response.sendRedirect("/main");
             } else {
                 // 입력값 에러
                 request.setAttribute("msg", "아이디 또는 비밀번호가 맞지 않습니다.");
@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
     }

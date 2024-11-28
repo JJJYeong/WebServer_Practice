@@ -1,7 +1,7 @@
-package com.busanit501.controller;
+package com.busanit501.user.controller;
 
-import com.busanit501.dto.UserDTO;
-import com.busanit501.service.UserService;
+import com.busanit501.user.dto.UserDTO;
+import com.busanit501.user.service.UserService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
@@ -29,6 +29,6 @@ public class UserInfoController extends HttpServlet {
             throw new RuntimeException(e);
         }
         request.setAttribute("dto", userDTO);
-        request.getRequestDispatcher("/WEB-INF/userInfo.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/user/userInfo.jsp").forward(request, response);
     }
 }

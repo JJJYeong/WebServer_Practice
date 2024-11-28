@@ -17,7 +17,7 @@
         비밀번호 : <input type="password" name="pw" value="${dto.pw}"><br/>
         이름 : <input type="text" name="name" value="${dto.name}"><br/>
         <button type="submit">수정하기</button><br/>
-        <a href="/user/list">목록으로</a>
+        <a href="/main">메인으로</a>
         <a href="/logout">로그아웃</a>
     </form>
 </body>

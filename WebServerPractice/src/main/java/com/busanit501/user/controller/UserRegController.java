@@ -1,7 +1,7 @@
-package com.busanit501.controller;
+package com.busanit501.user.controller;
 
-import com.busanit501.dto.UserDTO;
-import com.busanit501.service.UserService;
+import com.busanit501.user.dto.UserDTO;
+import com.busanit501.user.service.UserService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class UserRegController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("UserRegController doGet");
-        request.getRequestDispatcher("/WEB-INF/userReg.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/user/userReg.jsp").forward(request, response);
     }
 
     @Override

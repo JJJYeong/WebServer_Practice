@@ -1,6 +1,6 @@
-package com.busanit501.controller;
+package com.busanit501.food.controller;
 
-import com.busanit501.service.UserService;
+import com.busanit501.food.service.FoodService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.annotation.WebServlet;
@@ -11,20 +11,20 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @Log4j2
-@WebServlet(name = "UserDelController",urlPatterns = "/user/delete")
-public class UserDelController extends HttpServlet {
+@WebServlet(name = "FoodDelController",urlPatterns = "/food/delete")
+public class FoodDelController extends HttpServlet {
 
-    private UserService service = UserService.INSTANCE;
+    private FoodService service = FoodService.INSTANCE;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        log.info("UserDelController doPost");
+        log.info("FoodDelController doGet");
 
         try {
-            service.delete(request.getParameter("id"));
+            service.delete(Long.parseLong(request.getParameter("fno")));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        response.sendRedirect("/user/list");
+        response.sendRedirect("/food/list");
     }
 }

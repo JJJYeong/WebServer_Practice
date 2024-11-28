@@ -1,4 +1,4 @@
-package com.busanit501.dto;
+package com.busanit501.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

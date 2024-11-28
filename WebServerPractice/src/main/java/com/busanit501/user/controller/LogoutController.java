@@ -1,4 +1,4 @@
-package com.busanit501.controller;
+package com.busanit501.user.controller;
 
 import lombok.extern.log4j.Log4j2;
 
