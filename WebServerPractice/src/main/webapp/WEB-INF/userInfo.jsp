@@ -16,9 +16,10 @@
     비밀번호 : <input type="password" name="pw" value="${dto.pw}" disabled><br/>
     이름 : <input type="text" name="name" value="${dto.name}" disabled><br/>
     <form action="/user/delete?id=${dto.id}" method="post">
-        <a href="/user/update?id=${dto.id}">정보 수정</a>
+        <button><a href="/user/update?id=${dto.id}">정보 수정</a></button>
         <button type="submit">회원 탈퇴</button><br/>
         <a href="/user/list">목록으로</a>
+        <a href="/logout">로그아웃</a>
     </form>
 </body>
 </html>

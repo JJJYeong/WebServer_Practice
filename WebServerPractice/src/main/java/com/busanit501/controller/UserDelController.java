@@ -18,7 +18,7 @@ public class UserDelController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        log.info("UserDelController doGet");
+        log.info("UserDelController doPost");
 
         try {
             service.delete(request.getParameter("id"));

@@ -18,5 +18,6 @@
       <li>${dto.id} <a href="/user/info?id=${dto.id}">${dto.name}</a></li>
     </c:forEach>
   </ul>
+  <a href="/logout">로그아웃</a>
 </body>
 </html>
