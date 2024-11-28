@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("LoginController doPost");
 
         UserDTO userDTO = UserDTO.builder()
@@ -34,13 +34,21 @@ public class LoginController extends HttpServlet {
                 .pw(request.getParameter("pw"))
                 .build();
         try {
-            service.login(userDTO);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        HttpSession session = request.getSession();
-        session.setAttribute("loginInfo", request.getParameter("id") + " " + request.getParameter("pw"));
+            UserDTO user = service.login(userDTO);
 
-        response.sendRedirect("/user/list");
+            if(user.getId() != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("loginInfo", user);
+                response.sendRedirect("/user/list");
+            } else {
+                // 입력값 에러
+                request.setAttribute("msg", "아이디 또는 비밀번호가 맞지 않습니다.");
+                request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

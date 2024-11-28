@@ -25,7 +25,7 @@ public class UserRegController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("UserRegController doPost");
 
         UserDTO userDTO = new UserDTO(
@@ -34,10 +34,17 @@ public class UserRegController extends HttpServlet {
                 , request.getParameter("name")
         );
         try {
-            service.register(userDTO);
+            if(service.getOne(userDTO.getId()).getId() == null) {
+                service.register(userDTO);
+                response.sendRedirect("/login");
+            } else {
+                // 이미 존재하는 아이디
+                request.setAttribute("msg", "이미 존재하는 아이디입니다.");
+                request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        response.sendRedirect("/login");
     }
 }
