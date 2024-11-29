@@ -40,8 +40,7 @@ public class UserRegController extends HttpServlet {
                 response.sendRedirect("/login");
             } else {
                 // 이미 존재하는 아이디
-                request.setAttribute("msg", "이미 존재하는 아이디입니다.");
-                request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
+                response.sendRedirect("/register?result=error");
             }
 
         } catch (SQLException e) {

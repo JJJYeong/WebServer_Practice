@@ -13,6 +13,7 @@
 </head>
 <body>
   <h1>메뉴 목록</h1>
+  조회한 메뉴 번호 : ${cookie.viewFoods.value}
   <ul>
     <c:forEach var="dto" items="${list}">
       <li><a href="/food/read?fno=${dto.fno}">${dto.title}</a></li>

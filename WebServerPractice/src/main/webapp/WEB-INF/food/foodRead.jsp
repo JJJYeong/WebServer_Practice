@@ -20,6 +20,7 @@
         <a href="/food/update?fno=${dto.fno}">수정하기</a>
         <button type="submit">삭제</button>
     </form>
+    <a href="/food/list">목록으로</a>
     <a href="/main">메인으로</a>
     <a href="/logout">로그아웃</a>
 </body>

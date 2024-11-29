@@ -55,8 +55,7 @@ public class LoginController extends HttpServlet {
 
             } else {
                 // 입력값 에러
-                request.setAttribute("msg", "아이디 또는 비밀번호가 맞지 않습니다.");
-                request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
+                response.sendRedirect("/login?result=error");
             }
 
         } catch (SQLException e) {
